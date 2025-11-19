@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Upload, X, Image as ImageIcon } from 'lucide-react';
 import { useImageUpload } from '../hooks/useImageUpload';
 
@@ -16,194 +16,36 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   folder = 'menu-images'
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [localImageUrl, setLocalImageUrl] = useState<string | null>(null);
-  const { uploadImage, uploading, uploadProgress } = useImageUpload(folder);
-  
-  // Use local image URL if available, otherwise use prop
-  const displayImage = localImageUrl || currentImage || null;
-  
-  // Log when currentImage changes to debug and sync with local state
-  useEffect(() => {
-    console.log('🖼️ ImageUpload currentImage prop changed:', {
-      currentImage,
-      localImageUrl,
-      displayImage: localImageUrl || currentImage || null,
-      type: typeof currentImage,
-      hasValue: !!currentImage,
-      length: currentImage?.length || 0
-    });
-    
-    // Sync local state with prop when it changes from parent (but don't overwrite if we just set it locally)
-    if (currentImage && currentImage !== localImageUrl) {
-      console.log('🖼️ Syncing local image URL with prop from parent');
-      setLocalImageUrl(currentImage);
-    } else if (!currentImage && localImageUrl && !uploading) {
-      // If prop is cleared and we're not uploading, clear local too (but keep it during upload)
-      console.log('🖼️ Clearing local image URL because prop was cleared');
-      setLocalImageUrl(null);
-    }
-  }, [currentImage]); // Only depend on currentImage to avoid loops
+  const { uploadImage, deleteImage, uploading, uploadProgress } = useImageUpload(folder);
 
   const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    
-    // Check if files array exists and has items
-    if (!files || files.length === 0) {
-      console.log('⚠️ No file selected');
-      // Reset input to allow selecting the same file again
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-      return;
-    }
-
-    const file = files[0];
-    
-    // Log file details for debugging
-    console.log('📁 File selected:', {
-      name: file.name,
-      size: file.size,
-      type: file.type,
-      lastModified: file.lastModified,
-      isFile: file instanceof File,
-      isBlob: file instanceof Blob
-    });
-
-    // Check if file is actually a File object and has valid data
-    if (!(file instanceof File)) {
-      alert('❌ Invalid file selected. Please try again.');
-      // Reset input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-      return;
-    }
-
-    // Check if file has content (size > 0)
-    if (file.size === 0) {
-      alert('❌ The selected file is empty. Please select a valid image.');
-      // Reset input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-      return;
-    }
-
-    // Additional check: verify file is not a placeholder
-    // Some mobile browsers might create placeholder files with very small sizes
-    // Only reject if file is suspiciously small (less than 1KB) which indicates a placeholder
-    if (file.size < 1024) {
-      // Check if filename suggests it's a placeholder
-      const fileName = file.name.toLowerCase();
-      const suspiciousNames = ['take photo', 'camera', 'photo.jpg', 'image.jpg'];
-      if (suspiciousNames.some(name => fileName === name || fileName.includes(name))) {
-        alert('❌ Please select an actual image file. The selected file appears to be a placeholder. Make sure to take a photo or select an image from your gallery.');
-        // Reset input
-        if (fileInputRef.current) {
-          fileInputRef.current.value = '';
-        }
-        return;
-      }
-    }
-
-    // Validate file type - be more lenient for mobile devices
-    // Gallery files on mobile often have empty MIME types, so we rely more on file extension
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif', ''];
-    const fileExtension = file.name.split('.').pop()?.toLowerCase();
-    const validExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
-    
-    // Check if file extension is valid (primary check for gallery files)
-    const hasValidExtension = fileExtension && validExtensions.includes(fileExtension);
-    
-    // Check MIME type (may be empty for gallery files on mobile)
-    const hasValidMimeType = file.type && allowedTypes.includes(file.type.toLowerCase());
-    
-    // Allow if either extension OR MIME type is valid (gallery files often have empty MIME type)
-    if (!hasValidExtension && !hasValidMimeType) {
-      console.error('❌ Invalid file type:', { 
-        type: file.type, 
-        extension: fileExtension, 
-        name: file.name 
-      });
-      alert(`❌ Please upload a valid image file (JPEG, PNG, WebP, or GIF).\n\nFile type: ${file.type || 'unknown'}\nExtension: ${fileExtension || 'none'}`);
-      // Reset input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-      return;
-    }
-    
-    // If MIME type is empty but extension is valid, log it for debugging
-    if (!file.type && hasValidExtension) {
-      console.log('⚠️ Gallery file with empty MIME type but valid extension:', fileExtension);
-    }
-
-    const maxSize = 5 * 1024 * 1024; // 5MB
-    if (file.size > maxSize) {
-      alert('❌ Image size must be less than 5MB');
-      return;
-    }
+    const file = event.target.files?.[0];
+    if (!file) return;
 
     try {
-      // Upload to Supabase Storage
-      console.log('🚀 Starting image upload...');
-      console.log('📁 File details:', { 
-        name: file.name, 
-        size: file.size, 
-        type: file.type || 'empty (gallery file)',
-        extension: file.name.split('.').pop()?.toLowerCase()
-      });
-      
       const imageUrl = await uploadImage(file);
-      console.log('✅ Upload complete, received image URL:', imageUrl);
-      console.log('✅ URL type:', typeof imageUrl, 'URL length:', imageUrl?.length);
-      
-      if (!imageUrl || imageUrl.trim() === '') {
-        throw new Error('Upload succeeded but no URL was returned');
-      }
-      
-      // Ensure we pass a valid string URL
-      const validUrl = imageUrl.trim();
-      console.log('📤 Calling onImageChange with URL:', validUrl.substring(0, 80) + '...');
-      
-      // Immediately update local state to show preview
-      setLocalImageUrl(validUrl);
-      console.log('✅ Local image URL set for immediate preview');
-      
-      // Call the callback with the URL to update parent state
-      onImageChange(validUrl);
-      
-      // Verify callback was called
-      console.log('✅ onImageChange callback executed');
+      onImageChange(imageUrl);
     } catch (error) {
-      console.error('❌ Upload error:', error);
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      
-      // Show user-friendly error message
-      let userMessage = `❌ Failed to upload image: ${errorMessage}`;
-      
-      if (errorMessage.includes('Bucket not found') || errorMessage.includes('not found')) {
-        userMessage += '\n\n💡 Solution: Run CREATE_STORAGE_BUCKET.sql in Supabase SQL Editor to create the storage bucket.';
-      } else if (errorMessage.includes('timeout')) {
-        userMessage += '\n\n💡 This might mean the storage bucket doesn\'t exist. Check your Supabase Storage settings.';
-      } else if (errorMessage.includes('row-level security') || errorMessage.includes('policy')) {
-        userMessage += '\n\n💡 Solution: Run CREATE_STORAGE_BUCKET.sql to set up storage policies.';
-      } else if (errorMessage.includes('Invalid file type') || errorMessage.includes('valid image file')) {
-        userMessage += '\n\n💡 Tip: Make sure you\'re selecting an actual image file from your gallery, not a placeholder.';
-      }
-      
-      alert(userMessage);
-    } finally {
-      // Reset file input after upload attempt (success or failure) to allow selecting the same file again
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
+      alert(error instanceof Error ? error.message : 'Failed to upload image');
+    }
+
+    // Reset file input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
-  const handleRemoveImage = () => {
-    setLocalImageUrl(null);
-    onImageChange(undefined);
+  const handleRemoveImage = async () => {
+    if (currentImage) {
+      try {
+        await deleteImage(currentImage);
+        onImageChange(undefined);
+      } catch (error) {
+        console.error('Error removing image:', error);
+        // Still remove from UI even if deletion fails
+        onImageChange(undefined);
+      }
+    }
   };
 
   const triggerFileSelect = () => {
@@ -212,14 +54,21 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 
   return (
     <div className={`space-y-4 ${className}`}>
-      {displayImage ? (
-        <div className="relative group">
+      {currentImage ? (
+        <div className="relative">
           <img
-            src={displayImage}
+            src={currentImage}
             alt="Preview"
             className="w-full max-w-2xl object-contain rounded-2xl border-2 border-sky-200 shadow-lg hover:shadow-xl transition-all"
             loading="lazy"
             decoding="async"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+            onLoad={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+            style={{ opacity: 0 }}
           />
           <button
             type="button"
@@ -231,15 +80,30 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </button>
         </div>
       ) : (
-            <div
-              onClick={triggerFileSelect}
-              className="w-full max-w-2xl border-2 border-dashed border-sky-300 rounded-2xl p-12 flex flex-col items-center justify-center cursor-pointer hover:border-sky-400 hover:bg-sky-50/50 transition-all duration-300 bg-gradient-to-br from-sky-50/30 to-blue-50/30"
-            >
-                  <ImageIcon className="h-16 w-16 text-sky-400 mb-4" />
-                  <p className="text-lg font-medium text-gray-700 mb-2">Click to upload product image</p>
-                  <p className="text-sm text-gray-500 mb-1">or drag and drop</p>
-                  <p className="text-xs text-gray-400">JPEG, PNG, WebP (max 5MB)</p>
+        <div
+          onClick={triggerFileSelect}
+          className="w-full max-w-2xl border-2 border-dashed border-sky-300 rounded-2xl p-12 flex flex-col items-center justify-center cursor-pointer hover:border-sky-400 hover:bg-sky-50/50 transition-all duration-300 bg-gradient-to-br from-sky-50/30 to-blue-50/30"
+        >
+          {uploading ? (
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-600 mx-auto mb-2"></div>
+              <p className="text-sm text-gray-600">Uploading... {uploadProgress}%</p>
+              <div className="w-32 bg-gray-200 rounded-full h-2 mt-2">
+                <div 
+                  className="bg-sky-600 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${uploadProgress}%` }}
+                ></div>
+              </div>
             </div>
+          ) : (
+            <>
+              <ImageIcon className="h-16 w-16 text-sky-400 mb-4" />
+              <p className="text-lg font-medium text-gray-700 mb-2">Click to upload product image</p>
+              <p className="text-sm text-gray-500 mb-1">or drag and drop</p>
+              <p className="text-xs text-gray-400">JPEG, PNG, WebP, GIF (max 5MB)</p>
+            </>
+          )}
+        </div>
       )}
 
       <input
@@ -251,7 +115,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         disabled={uploading}
       />
 
-      {!displayImage && (
+      {!currentImage && (
         <div className="flex items-center gap-3 flex-wrap">
           <button
             type="button"
@@ -262,8 +126,22 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             <Upload className="h-5 w-5" />
             <span>Choose File</span>
           </button>
+          <span className="text-sm text-gray-500">or enter URL below</span>
         </div>
       )}
+
+      {/* URL Input as fallback */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">Or enter image URL</label>
+        <input
+          type="url"
+          value={currentImage || ''}
+          onChange={(e) => onImageChange(e.target.value || undefined)}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+          placeholder="https://example.com/image.jpg"
+          disabled={uploading}
+        />
+      </div>
     </div>
   );
 };
