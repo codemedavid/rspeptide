@@ -292,30 +292,30 @@ Please confirm this order. Thank you!
 
   if (step === 'confirmation') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center px-4 py-12">
+      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white flex items-center justify-center px-4 py-12">
         <div className="max-w-2xl w-full">
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 text-center border-2 border-green-100">
-            <div className="bg-gradient-to-br from-blue-400 to-blue-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce">
-              <ShieldCheck className="w-14 h-14 text-white" />
+          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center border-2 border-gold-300/30">
+            <div className="bg-gradient-to-br from-gold-500 to-gold-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl animate-bounce border-2 border-gold-700">
+              <ShieldCheck className="w-14 h-14 text-black" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-2 flex-wrap">
-              <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">COMPLETE YOUR ORDER</span>
-              <Sparkles className="w-7 h-7 text-yellow-500" />
+              <span className="bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">COMPLETE YOUR ORDER</span>
+              <Sparkles className="w-7 h-7 text-gold-600" />
             </h1>
             <p className="text-gray-600 mb-8 text-base md:text-lg leading-relaxed">
               Copy the order message below and send it to your preferred platform (IG/viber) along with your payment screenshot.
             </p>
 
             {/* Order Message Display */}
-            <div className="bg-gray-50 rounded-2xl p-6 mb-6 text-left border-2 border-gray-200">
+            <div className="bg-gray-50 rounded-2xl p-6 mb-6 text-left border-2 border-gold-300/30">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-bold text-gray-900 flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5 text-blue-600" />
+                  <MessageCircle className="w-5 h-5 text-gold-600" />
                   Your Order Message
                 </h3>
                 <button
                   onClick={handleCopyMessage}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all text-sm"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white rounded-lg font-medium transition-all text-sm shadow-md hover:shadow-lg border border-gold-500/20"
                 >
                   {copied ? (
                     <>
@@ -347,7 +347,7 @@ Please confirm this order. Thank you!
             <div className="space-y-3 mb-8">
               <button
                 onClick={handleOpenContact}
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2 border border-gold-500/20"
               >
                 {contactMethod === 'instagram' ? <Instagram className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
                 Open {contactMethod === 'instagram' ? 'Instagram' : 'Viber'}
@@ -360,10 +360,10 @@ Please confirm this order. Thank you!
               )}
             </div>
             
-            <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-6 mb-8 text-left border-2 border-blue-100">
+            <div className="bg-gradient-to-r from-gold-50 to-gold-100/50 rounded-2xl p-6 mb-8 text-left border-2 border-gold-300/30">
               <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                 What Happens Next?
-                <Sparkles className="w-5 h-5 text-yellow-500" />
+                <Sparkles className="w-5 h-5 text-gold-600" />
               </h3>
               <ul className="space-y-3 text-sm md:text-base text-gray-700">
                 <li className="flex items-start gap-3">
@@ -390,7 +390,7 @@ Please confirm this order. Thank you!
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 window.location.href = '/';
               }}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-black py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2 border-2 border-gold-700"
             >
               <Heart className="w-5 h-5 animate-pulse" />
               Continue Shopping
@@ -403,29 +403,29 @@ Please confirm this order. Thank you!
 
   if (step === 'details') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-6 md:py-8">
+      <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white py-6 md:py-8">
         <div className="container mx-auto px-3 md:px-4 max-w-6xl">
           <button
             onClick={onBack}
-            className="text-blue-600 hover:text-blue-700 font-medium mb-4 md:mb-6 flex items-center gap-2 transition-colors group"
+            className="text-gray-700 hover:text-gold-600 font-medium mb-4 md:mb-6 flex items-center gap-2 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="text-sm md:text-base">Back to Cart</span>
           </button>
 
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 flex items-center gap-2">
+          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent mb-6 md:mb-8 flex items-center gap-2">
             Checkout
-            <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-yellow-500" />
+            <Sparkles className="w-6 h-6 md:w-7 md:h-7 text-gold-600" />
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Form */}
             <div className="lg:col-span-2 space-y-4 md:space-y-6">
               {/* Customer Information */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-blue-100">
+              <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
-                  <div className="bg-gradient-to-br from-blue-400 to-purple-500 p-2 rounded-xl">
-                    <Package className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
+                    <Package className="w-5 h-5 md:w-6 md:h-6 text-black" />
                   </div>
                   Customer Information
                 </h2>
@@ -473,9 +473,11 @@ Please confirm this order. Thank you!
               </div>
 
               {/* Shipping Address */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-purple-100">
+              <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
-                  <span className="text-2xl">📦</span>
+                  <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
+                    <Package className="w-5 h-5 md:w-6 md:h-6 text-black" />
+                  </div>
                   Shipping Address
                 </h2>
                 <div className="space-y-4">
@@ -550,9 +552,9 @@ Please confirm this order. Thank you!
               </div>
 
               {/* Shipping Location Selection */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-purple-100">
+              <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 flex items-center gap-2">
-                  <Package className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                  <Package className="w-5 h-5 md:w-6 md:h-6 text-gold-600" />
                   Choose Shipping Location *
                 </h2>
                 <p className="text-xs md:text-sm text-gray-600 mb-4 md:mb-6">
@@ -600,7 +602,7 @@ Please confirm this order. Thank you!
                 disabled={!isDetailsValid}
                 className={`w-full py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg transition-all transform shadow-lg ${
                   isDetailsValid
-                    ? 'bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white hover:scale-105 hover:shadow-xl'
+                    ? 'bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white hover:scale-105 hover:shadow-xl border border-gold-500/20'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
@@ -610,10 +612,10 @@ Please confirm this order. Thank you!
 
             {/* Order Summary Sidebar */}
             <div className="lg:col-span-1">
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-pink-100">
+              <div className="bg-white rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-gold-300/30">
                 <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
                   Order Summary
-                  <Heart className="w-5 h-5 text-pink-500 animate-pulse" />
+                  <Sparkles className="w-5 h-5 text-gold-600" />
                 </h2>
                 
                 <div className="space-y-4 mb-6">
@@ -623,7 +625,7 @@ Please confirm this order. Thank you!
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900 text-sm">{item.product.name}</h4>
                           {item.variation && (
-                            <p className="text-xs text-blue-600 mt-1">{item.variation.name}</p>
+                            <p className="text-xs text-gold-600 mt-1">{item.variation.name}</p>
                           )}
                           <p className="text-xs text-gray-500 mt-1">
                             {item.product.purity_percentage}% Purity
@@ -645,14 +647,14 @@ Please confirm this order. Thank you!
                   </div>
                   <div className="flex justify-between text-gray-600 text-xs">
                     <span>Shipping</span>
-                    <span className="font-medium text-blue-600">
+                    <span className="font-medium text-gold-600">
                       {shippingLocation ? `₱${shippingFee.toLocaleString('en-PH', { minimumFractionDigits: 0 })}` : 'Select location'}
                     </span>
                   </div>
                   <div className="border-t-2 border-gray-200 pt-3">
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-gray-900">Total</span>
-                      <span className="text-2xl font-bold text-blue-600">
+                      <span className="text-2xl font-bold text-gold-600">
                         ₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                       </span>
                     </div>
@@ -673,28 +675,28 @@ Please confirm this order. Thank you!
   const paymentMethodInfo = paymentMethods.find(pm => pm.id === selectedPaymentMethod);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-6 md:py-8">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-white py-6 md:py-8">
       <div className="container mx-auto px-3 md:px-4 max-w-6xl">
         <button
           onClick={() => setStep('details')}
-          className="text-blue-600 hover:text-blue-700 font-medium mb-4 md:mb-6 flex items-center gap-2 transition-colors group"
+          className="text-gray-700 hover:text-gold-600 font-medium mb-4 md:mb-6 flex items-center gap-2 transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform" />
           <span className="text-sm md:text-base">Back to Details</span>
         </button>
 
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 flex items-center gap-2">
+        <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent mb-6 md:mb-8 flex items-center gap-2">
           Payment
-          <CreditCard className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
+          <CreditCard className="w-6 h-6 md:w-7 md:h-7 text-gold-600" />
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {/* Payment Form */}
           <div className="lg:col-span-2 space-y-4 md:space-y-6">
             {/* Shipping Location Selection */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-purple-100">
+            <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 flex items-center gap-2">
-                <Package className="w-5 h-5 md:w-6 md:h-6 text-purple-600" />
+                <Package className="w-5 h-5 md:w-6 md:h-6 text-gold-600" />
                 Choose Shipping Location *
               </h2>
               <p className="text-xs md:text-sm text-gray-600 mb-4 md:mb-6">
@@ -759,10 +761,10 @@ Please confirm this order. Thank you!
             </div>
 
             {/* Payment Method Selection */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-green-100">
+            <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
-                <div className="bg-gradient-to-br from-blue-400 to-blue-600 p-2 rounded-xl">
-                  <CreditCard className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
+                  <CreditCard className="w-5 h-5 md:w-6 md:h-6 text-black" />
                 </div>
                 Payment Method
               </h2>
@@ -774,13 +776,13 @@ Please confirm this order. Thank you!
                     onClick={() => setSelectedPaymentMethod(method.id)}
                     className={`p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
                       selectedPaymentMethod === method.id
-                        ? 'border-blue-600 bg-blue-50'
-                        : 'border-gray-200 hover:border-blue-300'
+                        ? 'border-gold-500 bg-gold-50'
+                        : 'border-gray-200 hover:border-gold-300'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <CreditCard className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center">
+                        <CreditCard className="w-6 h-6 text-gold-600" />
                       </div>
                       <div className="text-left">
                         <p className="font-semibold text-gray-900">{method.name}</p>
@@ -788,8 +790,8 @@ Please confirm this order. Thank you!
                       </div>
                     </div>
                     {selectedPaymentMethod === method.id && (
-                      <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs">✓</span>
+                      <div className="w-6 h-6 bg-gold-600 rounded-full flex items-center justify-center">
+                        <span className="text-black text-xs font-bold">✓</span>
                       </div>
                     )}
                   </button>
@@ -797,12 +799,12 @@ Please confirm this order. Thank you!
               </div>
 
               {paymentMethodInfo && (
-                <div className="bg-blue-50 rounded-lg p-6">
+                <div className="bg-gold-50 rounded-lg p-6 border border-gold-200">
                   <h3 className="font-semibold text-gray-900 mb-4">Payment Details</h3>
                   <div className="space-y-2 text-sm text-gray-700 mb-4">
                     <p><strong>Account Number:</strong> {paymentMethodInfo.account_number}</p>
                     <p><strong>Account Name:</strong> {paymentMethodInfo.account_name}</p>
-                    <p><strong>Amount to Pay:</strong> <span className="text-xl font-bold text-blue-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span></p>
+                    <p><strong>Amount to Pay:</strong> <span className="text-xl font-bold text-gold-600">₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span></p>
                   </div>
                   
                   {paymentMethodInfo.qr_code_url && (
@@ -822,9 +824,9 @@ Please confirm this order. Thank you!
             </div>
 
             {/* Contact Method Selection */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-pink-100">
+            <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
-                <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-pink-600" />
+                <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-gold-600" />
                 Preferred Contact Method *
               </h2>
               <div className="grid grid-cols-1 gap-3">
@@ -832,20 +834,20 @@ Please confirm this order. Thank you!
                   onClick={() => setContactMethod('instagram')}
                   className={`p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
                     contactMethod === 'instagram'
-                      ? 'border-pink-500 bg-pink-50'
-                      : 'border-gray-200 hover:border-pink-300'
+                      ? 'border-gold-500 bg-gold-50'
+                      : 'border-gray-200 hover:border-gold-300'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Instagram className="w-6 h-6 text-pink-600" />
+                    <Instagram className="w-6 h-6 text-gold-600" />
                     <div className="text-left">
                       <p className="font-semibold text-gray-900">Instagram</p>
                       <p className="text-sm text-gray-500">@hpglowpeptides</p>
                     </div>
                   </div>
                   {contactMethod === 'instagram' && (
-                    <div className="w-6 h-6 bg-pink-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs">✓</span>
+                    <div className="w-6 h-6 bg-gold-600 rounded-full flex items-center justify-center">
+                      <span className="text-black text-xs font-bold">✓</span>
                     </div>
                   )}
                 </button>
@@ -853,20 +855,20 @@ Please confirm this order. Thank you!
                   onClick={() => setContactMethod('viber')}
                   className={`p-4 rounded-lg border-2 transition-all flex items-center justify-between ${
                     contactMethod === 'viber'
-                      ? 'border-purple-500 bg-purple-50'
-                      : 'border-gray-200 hover:border-purple-300'
+                      ? 'border-gold-500 bg-gold-50'
+                      : 'border-gray-200 hover:border-gold-300'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Phone className="w-6 h-6 text-purple-600" />
+                    <Phone className="w-6 h-6 text-gold-600" />
                     <div className="text-left">
                       <p className="font-semibold text-gray-900">Viber</p>
                       <p className="text-sm text-gray-500">09062349763</p>
                     </div>
                   </div>
                   {contactMethod === 'viber' && (
-                    <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
-                      <span className="text-white text-xs">✓</span>
+                    <div className="w-6 h-6 bg-gold-600 rounded-full flex items-center justify-center">
+                      <span className="text-black text-xs font-bold">✓</span>
                     </div>
                   )}
                 </button>
@@ -874,9 +876,11 @@ Please confirm this order. Thank you!
             </div>
 
             {/* Additional Notes */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-5 md:p-6 border-2 border-pink-100">
+            <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="text-2xl">📝</span>
+                <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
+                  <MessageCircle className="w-5 h-5 text-black" />
+                </div>
                 Order Notes (Optional)
               </h2>
               <textarea
@@ -893,7 +897,7 @@ Please confirm this order. Thank you!
               disabled={!contactMethod || !shippingLocation}
               className={`w-full py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg transition-all flex items-center justify-center gap-2 ${
                 contactMethod && shippingLocation
-                  ? 'bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white hover:shadow-xl transform hover:scale-105'
+                  ? 'bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white hover:shadow-xl transform hover:scale-105 border border-gold-500/20'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
@@ -904,10 +908,10 @@ Please confirm this order. Thank you!
 
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-blue-100">
+            <div className="bg-white rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-gold-300/30">
               <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
                 Final Summary
-                <Sparkles className="w-5 h-5 text-yellow-500" />
+                <Sparkles className="w-5 h-5 text-gold-600" />
               </h2>
               
               {/* Customer Info */}
@@ -930,14 +934,14 @@ Please confirm this order. Thank you!
                 </div>
                 <div className="flex justify-between text-gray-600 text-xs">
                   <span>Shipping</span>
-                  <span className="font-medium text-blue-600">
+                  <span className="font-medium text-gold-600">
                     {shippingLocation ? `₱${shippingFee.toLocaleString('en-PH', { minimumFractionDigits: 0 })} (${shippingLocation.replace('_', ' & ')})` : 'Select location'}
                   </span>
                 </div>
                 <div className="border-t-2 border-gray-200 pt-3">
                   <div className="flex justify-between items-center">
                     <span className="font-bold text-gray-900">Total</span>
-                    <span className="text-2xl font-bold text-blue-600">
+                    <span className="text-2xl font-bold text-gold-600">
                       ₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                     </span>
                   </div>
