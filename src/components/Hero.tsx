@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Sparkles, FlaskConical } from 'lucide-react';
 
 type HeroProps = {
   onShopAll?: () => void;
@@ -27,14 +27,20 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-theme-text mb-6 md:mb-8 tracking-tight leading-tight">
-            Radiance, <span className="text-theme-accent">Confidence</span> <br className="hidden md:block" />
-            & Vitality.
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-theme-text mb-4 md:mb-6 tracking-tight leading-tight">
+            Premium <span className="text-theme-accent">Peptides</span> & Essentials
+            <br className="hidden md:block" />
+            <span className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-600">— Trusted Quality for Your Journey.</span>
           </h1>
 
+          {/* Tagline */}
+          <p className="text-sm md:text-base text-theme-accent font-medium mb-4 md:mb-6">
+            Quality-tested products. Reliable performance. Trusted by our community.
+          </p>
+
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-gray-500 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Discover a curated selection of premium peptides designed to help you look and feel your absolute best. Lab-verified purity tailored for your journey.
+          <p className="text-base md:text-lg text-gray-500 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed">
+            Explore our carefully curated selection of high-quality peptides, peptide pens, cartridges, pen needles, and insulin syringes. Each product is personally tested and trusted for purity, safety, and performance — so you can pin with confidence.
           </p>
 
           {/* CTA Buttons */}
@@ -43,13 +49,16 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
               className="btn-primary w-full sm:w-auto group flex items-center justify-center gap-2"
               onClick={onShopAll}
             >
-              Shop Collection
+              Shop All Products
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-8 py-3 rounded-lg font-medium text-theme-text hover:text-theme-accent transition-colors flex items-center gap-2 w-full sm:w-auto justify-center">
-              View Lab Reports
+            <a
+              href="/coa"
+              className="px-8 py-3 rounded-lg font-medium text-theme-text hover:text-theme-accent transition-colors flex items-center gap-2 w-full sm:w-auto justify-center"
+            >
+              View Lab Tests & Quality Assurance
               <ShieldCheck className="w-4 h-4" />
-            </button>
+            </a>
           </div>
 
           {/* Trust Indicators */}
@@ -59,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
                 <ShieldCheck className="w-6 h-6 text-theme-accent" />
               </div>
               <p className="font-semibold text-theme-text">Lab Verified</p>
-              <p className="text-sm text-gray-400">99% Purity Guaranteed</p>
+              <p className="text-sm text-gray-400">Purity Guaranteed</p>
             </div>
             <div className="flex flex-col items-center gap-2 group">
               <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100 group-hover:border-theme-secondary/30 transition-colors">
@@ -70,11 +79,22 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
             </div>
             <div className="flex flex-col items-center gap-2 group">
               <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100 group-hover:border-theme-accent/30 transition-colors">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-theme-accent to-theme-secondary opacity-75" />
+                <FlaskConical className="w-6 h-6 text-theme-accent" />
               </div>
-              <p className="font-semibold text-theme-text">Fast Shipping</p>
-              <p className="text-sm text-gray-400">Nationwide Delivery</p>
+              <p className="font-semibold text-theme-text">Real-World Tested</p>
+              <p className="text-sm text-gray-400">Verified by Our Team</p>
             </div>
+          </div>
+
+          {/* Real-World Tested Section */}
+          <div className="mt-12 md:mt-16 bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <FlaskConical className="w-5 h-5 text-theme-accent" />
+              <h3 className="font-bold text-theme-text">Real-World Tested</h3>
+            </div>
+            <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+              Every peptide and supply item is used and verified by our team and community before being offered in our shop. Quality you can feel — results you can trust.
+            </p>
           </div>
 
         </div>
@@ -84,3 +104,4 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
 };
 
 export default Hero;
+
