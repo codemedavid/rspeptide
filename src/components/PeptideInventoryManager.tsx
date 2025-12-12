@@ -21,14 +21,14 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
   // Load confirmed orders for sales calculation
   useEffect(() => {
     loadOrders();
-    
+
     // Listen for order confirmation events to refresh sales data
     const handleOrderConfirmed = () => {
       loadOrders();
     };
-    
+
     window.addEventListener('orderConfirmed', handleOrderConfirmed);
-    
+
     return () => {
       window.removeEventListener('orderConfirmed', handleOrderConfirmed);
     };
@@ -70,10 +70,10 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
     }, 0);
 
     const totalInventoryValue = products.reduce((sum, product) => {
-      const price = product.discount_active && product.discount_price 
-        ? product.discount_price 
+      const price = product.discount_active && product.discount_price
+        ? product.discount_price
         : product.base_price;
-      
+
       // For products with variations, sum up variation stock values
       if (product.variations && product.variations.length > 0) {
         const variationValue = product.variations.reduce((vSum, variation) => {
@@ -81,12 +81,12 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
         }, 0);
         return sum + variationValue;
       }
-      
+
       return sum + (product.stock_quantity * price);
     }, 0);
 
     const totalItems = products.length;
-    
+
     const lowStockItems = products.filter(product => {
       if (product.variations && product.variations.length > 0) {
         // Check if any variation is low stock (less than 5)
@@ -116,7 +116,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
     // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(p => 
+      filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(query) ||
         p.description.toLowerCase().includes(query)
       );
@@ -164,7 +164,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
           .from('product_variations')
           .update({ stock_quantity: newStock })
           .eq('id', variationId);
-        
+
         if (error) throw error;
       } else {
         // Update product stock
@@ -172,10 +172,10 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
           .from('products')
           .update({ stock_quantity: newStock })
           .eq('id', productId);
-        
+
         if (error) throw error;
       }
-      
+
       await refreshProducts();
       alert('Stock updated successfully!');
     } catch (error) {
@@ -243,7 +243,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
                 <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs md:text-sm">Dashboard</span>
               </button>
-              <h1 className="text-sm md:text-base font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">
+              <h1 className="text-sm md:text-base font-bold text-navy-900">
                 Peptide Inventory
               </h1>
             </div>
@@ -330,7 +330,7 @@ const PeptideInventoryManager: React.FC<PeptideInventoryManagerProps> = ({ onBac
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white px-3 py-1.5 md:py-2 rounded-md font-medium text-xs md:text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 border border-gold-500/20"
+              className="bg-navy-900 hover:bg-navy-800 text-white px-3 py-1.5 md:py-2 rounded-md font-medium text-xs md:text-sm shadow-sm hover:shadow transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 border border-gold-500/20"
             >
               <RefreshCw className={`w-3 h-3 md:w-4 md:h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               <span className="hidden sm:inline">Refresh</span>
@@ -383,10 +383,10 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
       <>
         {product.variations.map((variation) => {
           const stockKey = `variation-${variation.id}`;
-          const currentStock = editStock[stockKey] !== undefined 
-            ? editStock[stockKey] 
+          const currentStock = editStock[stockKey] !== undefined
+            ? editStock[stockKey]
             : variation.stock_quantity;
-          
+
           return (
             <div
               key={variation.id}
@@ -401,15 +401,14 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
                     <span className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-full text-[10px] md:text-xs font-medium">
                       {categories.find(c => c.id === product.category)?.name || product.category}
                     </span>
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] md:text-xs font-semibold ${
-                      variation.stock_quantity > 0 
-                        ? 'bg-green-100 text-green-700' 
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] md:text-xs font-semibold ${variation.stock_quantity > 0
+                        ? 'bg-green-100 text-green-700'
                         : 'bg-red-100 text-red-700'
-                    }`}>
+                      }`}>
                       {variation.stock_quantity > 0 ? 'IN STOCK' : 'OUT OF STOCK'}
                     </span>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-xs md:text-sm">
                     <div>
                       <span className="text-gray-500 text-[10px] md:text-xs">Price per Vial</span>
@@ -494,12 +493,12 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
 
   // Product without variations
   const stockKey = `product-${product.id}`;
-  const currentStock = editStock[stockKey] !== undefined 
-    ? editStock[stockKey] 
+  const currentStock = editStock[stockKey] !== undefined
+    ? editStock[stockKey]
     : product.stock_quantity;
-  
-  const price = product.discount_active && product.discount_price 
-    ? product.discount_price 
+
+  const price = product.discount_active && product.discount_price
+    ? product.discount_price
     : product.base_price;
 
   return (
@@ -511,15 +510,14 @@ const InventoryItemCard: React.FC<InventoryItemCardProps> = ({ product, categori
             <span className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-full text-[10px] md:text-xs font-medium">
               {categories.find(c => c.id === product.category)?.name || product.category}
             </span>
-            <span className={`px-2 py-0.5 rounded-full text-[10px] md:text-xs font-semibold ${
-              product.stock_quantity > 0 
-                ? 'bg-green-100 text-green-700' 
+            <span className={`px-2 py-0.5 rounded-full text-[10px] md:text-xs font-semibold ${product.stock_quantity > 0
+                ? 'bg-green-100 text-green-700'
                 : 'bg-red-100 text-red-700'
-            }`}>
+              }`}>
               {product.stock_quantity > 0 ? 'IN STOCK' : 'OUT OF STOCK'}
             </span>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-xs md:text-sm">
             <div>
               <span className="text-gray-500 text-[10px] md:text-xs">Price per Vial</span>

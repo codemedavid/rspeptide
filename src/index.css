@@ -10,13 +10,14 @@
   --theme-text: #1A1A1A;
   --theme-accent: #1A1A1A;
   --theme-secondary: #F0E6D2;
-  
+
   --primary-black: #1A1A1A;
   --primary-white: #ffffff;
-  
+
   --gray-50: #FFFFFF;
   --gray-100: #F9F9F9;
-  --gray-200: #F0E6D2; /* Beige tint */
+  --gray-200: #F0E6D2;
+  /* Beige tint */
   --gray-300: #E5E5E5;
   --gray-500: #888888;
   --gray-900: #1A1A1A;
@@ -37,7 +38,12 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   color: var(--theme-text);
   letter-spacing: -0.02em;
@@ -45,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Minimalist Button Styles */
 .btn-primary {
-  @apply bg-theme-accent text-white px-6 py-3 rounded-md font-medium transition-all duration-200 hover:bg-opacity-90 active:scale-95 shadow-sm hover:shadow-md;
+  @apply bg-navy-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-navy-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
 }
 
 .btn-secondary {
@@ -98,8 +104,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeIn {
@@ -107,8 +120,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateX(-10px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .animate-slideIn {
@@ -154,8 +174,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Text Gradients (Simplified/Removed for minimalism, keeping simple colors) */

@@ -145,7 +145,7 @@ const PaymentMethodManager: React.FC<PaymentMethodManagerProps> = ({ onBack }) =
                   <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span className="text-sm sm:text-base">Back</span>
                 </button>
-                <h1 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">
+                <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-navy-900">
                   {currentView === 'add' ? 'Add Payment Method' : 'Edit Payment Method'}
                 </h1>
               </div>
@@ -159,7 +159,7 @@ const PaymentMethodManager: React.FC<PaymentMethodManagerProps> = ({ onBack }) =
                 </button>
                 <button
                   onClick={handleSaveMethod}
-                  className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white rounded-lg transition-all duration-200 flex items-center justify-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-xl border border-gold-500/20 text-sm sm:text-base"
+                  className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-navy-900 hover:bg-navy-800 text-white rounded-lg transition-all duration-200 flex items-center justify-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-xl border border-gold-500/20 text-sm sm:text-base"
                 >
                   <Save className="h-4 w-4" />
                   <span>Save</span>
@@ -300,13 +300,13 @@ const PaymentMethodManager: React.FC<PaymentMethodManagerProps> = ({ onBack }) =
                 <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span className="text-sm sm:text-base">Dashboard</span>
               </button>
-              <h1 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-navy-900">
                 Payment Methods
               </h1>
             </div>
             <button
               onClick={handleAddMethod}
-              className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl border border-gold-500/20 text-sm sm:text-base"
+              className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-navy-900 hover:bg-navy-800 text-white px-3 sm:px-4 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl border border-gold-500/20 text-sm sm:text-base"
             >
               <Plus className="h-4 w-4" />
               <span>Add Payment Method</span>
@@ -329,7 +329,7 @@ const PaymentMethodManager: React.FC<PaymentMethodManagerProps> = ({ onBack }) =
                 <p className="text-sm sm:text-base text-gray-500 mb-4">No payment methods found</p>
                 <button
                   onClick={handleAddMethod}
-                  className="bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white px-4 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl border border-gold-500/20 text-sm sm:text-base"
+                  className="bg-navy-900 hover:bg-navy-800 text-white px-4 py-2 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl border border-gold-500/20 text-sm sm:text-base"
                 >
                   Add First Payment Method
                 </button>

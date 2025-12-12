@@ -435,7 +435,7 @@ const AdminDashboard: React.FC = () => {
                     <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-xs md:text-sm">Back</span>
                   </button>
-                  <h1 className="text-sm md:text-base font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">
+                  <h1 className="text-sm md:text-base font-bold text-navy-900">
                     {currentView === 'add' ? '✨ Add New' : '✏️ Edit Product'}
                   </h1>
                 </div>
@@ -774,13 +774,13 @@ const AdminDashboard: React.FC = () => {
                     <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     <span className="text-xs md:text-sm">Dashboard</span>
                   </button>
-                  <h1 className="text-sm md:text-base font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent">Products</h1>
+                  <h1 className="text-sm md:text-base font-bold text-navy-900">Products</h1>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handleRefresh}
                     disabled={isRefreshing}
-                    className="bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white px-2 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1 disabled:opacity-50 border border-gold-500/20"
+                    className="bg-navy-900 hover:bg-navy-800 text-white px-2 py-1 rounded-md font-medium text-xs shadow-sm hover:shadow transition-all flex items-center gap-1 disabled:opacity-50 border border-gold-500/20"
                     title="Refresh data"
                   >
                     <RefreshCw className={`h-3 w-3 ${isRefreshing ? 'animate-spin' : ''}`} />

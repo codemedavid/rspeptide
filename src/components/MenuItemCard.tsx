@@ -124,10 +124,10 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                     className={`
                       px-2 py-1 text-xs rounded border transition-colors relative z-20
                       ${selectedVariation?.id === variation.id && !isOutOfStock
-                        ? 'bg-theme-text text-white border-theme-text'
+                        ? 'bg-navy-900 text-white border-navy-900'
                         : isOutOfStock
                           ? 'bg-gray-50 text-gray-300 border-gray-100 cursor-not-allowed'
-                          : 'bg-white text-gray-600 border-gray-200 hover:border-theme-text'
+                          : 'bg-white text-gray-600 border-gray-200 hover:border-navy-900'
                       }
                     `}
                   >
@@ -199,7 +199,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 handleAddToCart();
               }}
               disabled={!hasAnyStock || availableStock === 0}
-              className="flex-1 min-w-0 bg-theme-text text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-1 sm:gap-2"
+              className="flex-1 min-w-0 bg-navy-900 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-navy-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-1 sm:gap-2"
             >
               <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
               <span>Add</span>

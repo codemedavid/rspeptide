@@ -91,7 +91,7 @@ const ShippingManager: React.FC<ShippingManagerProps> = ({ onBack }) => {
                             >
                                 <span className="text-xs md:text-sm">← Dashboard</span>
                             </button>
-                            <h1 className="text-sm md:text-base font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent flex items-center gap-2">
+                            <h1 className="text-sm md:text-base font-bold text-navy-900 flex items-center gap-2">
                                 <MapPin className="w-4 h-4 text-gold-500" />
                                 Shipping Locations
                             </h1>
@@ -251,8 +251,8 @@ const ShippingManager: React.FC<ShippingManagerProps> = ({ onBack }) => {
                                             <button
                                                 onClick={() => handleToggleActive(location)}
                                                 className={`p-2 rounded-lg transition-colors ${location.is_active
-                                                        ? 'text-green-600 hover:bg-green-50'
-                                                        : 'text-gray-400 hover:bg-gray-100'
+                                                    ? 'text-green-600 hover:bg-green-50'
+                                                    : 'text-gray-400 hover:bg-gray-100'
                                                     }`}
                                                 title={location.is_active ? 'Disable' : 'Enable'}
                                             >

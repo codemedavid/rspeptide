@@ -300,13 +300,13 @@ Please confirm this order. Thank you!
             {/* Order Message Display */}
             <div className="bg-gray-50 rounded-2xl p-6 mb-6 text-left border-2 border-gold-300/30">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-gray-900 flex items-center gap-2">
+                <h3 className="font-bold text-navy-900 flex items-center gap-2">
                   <MessageCircle className="w-5 h-5 text-gold-600" />
                   Your Order Message
                 </h3>
                 <button
                   onClick={handleCopyMessage}
-                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white rounded-lg font-medium transition-all text-sm shadow-md hover:shadow-lg border border-gold-500/20"
+                  className="flex items-center gap-2 px-4 py-2 bg-navy-900 hover:bg-navy-800 text-white rounded-lg font-medium transition-all text-sm shadow-md hover:shadow-lg border border-gold-500/20"
                 >
                   {copied ? (
                     <>
@@ -338,7 +338,7 @@ Please confirm this order. Thank you!
             <div className="space-y-3 mb-8">
               <button
                 onClick={handleOpenContact}
-                className="w-full bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2 border border-gold-500/20"
+                className="w-full bg-navy-900 hover:bg-navy-800 text-white py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-2 border border-gold-500/20"
               >
                 <MessageCircle className="w-5 h-5" />
                 Open Messenger
@@ -352,7 +352,7 @@ Please confirm this order. Thank you!
             </div>
 
             <div className="bg-gradient-to-r from-gold-50 to-gold-100/50 rounded-2xl p-6 mb-8 text-left border-2 border-gold-300/30">
-              <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-navy-900 mb-4 flex items-center gap-2">
                 What Happens Next?
                 <Sparkles className="w-5 h-5 text-gold-600" />
               </h3>
@@ -414,7 +414,7 @@ Please confirm this order. Thank you!
             <div className="lg:col-span-2 space-y-4 md:space-y-6">
               {/* Customer Information */}
               <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-                <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                   <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
                     <Package className="w-5 h-5 md:w-6 md:h-6 text-black" />
                   </div>
@@ -465,7 +465,7 @@ Please confirm this order. Thank you!
 
               {/* Shipping Address */}
               <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-                <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                   <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
                     <Package className="w-5 h-5 md:w-6 md:h-6 text-black" />
                   </div>
@@ -544,7 +544,7 @@ Please confirm this order. Thank you!
 
               {/* Shipping Location Selection */}
               <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-                <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-2 md:mb-3 flex items-center gap-2">
                   <Package className="w-5 h-5 md:w-6 md:h-6 text-gold-600" />
                   Choose Shipping Location *
                 </h2>
@@ -561,7 +561,7 @@ Please confirm this order. Thank you!
                         : 'border-gray-200 hover:border-gold-300'
                         }`}
                     >
-                      <p className="font-semibold text-gray-900 text-sm">{loc.id.replace('_', ' & ')}</p>
+                      <p className="font-semibold text-navy-900 text-sm">{loc.id.replace('_', ' & ')}</p>
                       <p className="text-xs text-gray-500">₱{loc.fee.toLocaleString()}</p>
                     </button>
                   ))}
@@ -572,7 +572,7 @@ Please confirm this order. Thank you!
                 onClick={handleProceedToPayment}
                 disabled={!isDetailsValid}
                 className={`w-full py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg transition-all transform shadow-lg ${isDetailsValid
-                  ? 'bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white hover:scale-105 hover:shadow-xl border border-gold-500/20'
+                  ? 'bg-navy-900 hover:bg-navy-800 text-white hover:scale-105 hover:shadow-xl border border-gold-500/20'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
               >
@@ -583,7 +583,7 @@ Please confirm this order. Thank you!
             {/* Order Summary Sidebar */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-gold-300/30">
-                <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                   Order Summary
                   <Sparkles className="w-5 h-5 text-gold-600" />
                 </h2>
@@ -593,7 +593,7 @@ Please confirm this order. Thank you!
                     <div key={index} className="pb-4 border-b border-gray-200">
                       <div className="flex justify-between items-start mb-2">
                         <div className="flex-1">
-                          <h4 className="font-semibold text-gray-900 text-sm">{item.product.name}</h4>
+                          <h4 className="font-semibold text-navy-900 text-sm">{item.product.name}</h4>
                           {item.variation && (
                             <p className="text-xs text-gold-600 mt-1">{item.variation.name}</p>
                           )}
@@ -603,7 +603,7 @@ Please confirm this order. Thank you!
                             </p>
                           ) : null}
                         </div>
-                        <span className="font-semibold text-gray-900 text-sm">
+                        <span className="font-semibold text-navy-900 text-sm">
                           ₱{(item.price * item.quantity).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                         </span>
                       </div>
@@ -625,7 +625,7 @@ Please confirm this order. Thank you!
                   </div>
                   <div className="border-t-2 border-gray-200 pt-3">
                     <div className="flex justify-between items-center">
-                      <span className="font-bold text-gray-900">Total</span>
+                      <span className="font-bold text-navy-900">Total</span>
                       <span className="text-2xl font-bold text-gold-600">
                         ₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                       </span>
@@ -667,7 +667,7 @@ Please confirm this order. Thank you!
           <div className="lg:col-span-2 space-y-4 md:space-y-6">
             {/* Shipping Location Selection */}
             <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 flex items-center gap-2">
+              <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-2 md:mb-3 flex items-center gap-2">
                 <Package className="w-5 h-5 md:w-6 md:h-6 text-gold-600" />
                 Choose Shipping Location *
               </h2>
@@ -685,7 +685,7 @@ Please confirm this order. Thank you!
                       }`}
                   >
                     <div className="text-left">
-                      <p className="font-semibold text-gray-900">{loc.id.replace('_', ' & ')}</p>
+                      <p className="font-semibold text-navy-900">{loc.id.replace('_', ' & ')}</p>
                       <p className="text-sm text-gray-500">₱{loc.fee.toLocaleString()}</p>
                     </div>
                     {shippingLocation === loc.id && (
@@ -700,7 +700,7 @@ Please confirm this order. Thank you!
 
             {/* Payment Method Selection */}
             <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
+              <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                 <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
                   <CreditCard className="w-5 h-5 md:w-6 md:h-6 text-black" />
                 </div>
@@ -722,7 +722,7 @@ Please confirm this order. Thank you!
                         <CreditCard className="w-6 h-6 text-gold-600" />
                       </div>
                       <div className="text-left">
-                        <p className="font-semibold text-gray-900">{method.name}</p>
+                        <p className="font-semibold text-navy-900">{method.name}</p>
                         <p className="text-sm text-gray-500">{method.account_name}</p>
                       </div>
                     </div>
@@ -737,7 +737,7 @@ Please confirm this order. Thank you!
 
               {paymentMethodInfo && (
                 <div className="bg-gold-50 rounded-lg p-6 border border-gold-200">
-                  <h3 className="font-semibold text-gray-900 mb-4">Payment Details</h3>
+                  <h3 className="font-semibold text-navy-900 mb-4">Payment Details</h3>
                   <div className="space-y-2 text-sm text-gray-700 mb-4">
                     <p><strong>Account Number:</strong> {paymentMethodInfo.account_number}</p>
                     <p><strong>Account Name:</strong> {paymentMethodInfo.account_name}</p>
@@ -762,7 +762,7 @@ Please confirm this order. Thank you!
 
             {/* Contact Method Selection */}
             <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
+              <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                 <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-gold-600" />
                 Preferred Contact Method *
               </h2>
@@ -777,7 +777,7 @@ Please confirm this order. Thank you!
                   <div className="flex items-center gap-3">
                     <MessageCircle className="w-6 h-6 text-gold-600" />
                     <div className="text-left">
-                      <p className="font-semibold text-gray-900">Messenger</p>
+                      <p className="font-semibold text-navy-900">Messenger</p>
                       <p className="text-sm text-gray-500">SlimDose Peptides</p>
                     </div>
                   </div>
@@ -792,7 +792,7 @@ Please confirm this order. Thank you!
 
             {/* Additional Notes */}
             <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border-2 border-gold-300/30">
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 flex items-center gap-2">
                 <div className="bg-gradient-to-br from-gold-500 to-gold-600 p-2 rounded-xl">
                   <MessageCircle className="w-5 h-5 text-black" />
                 </div>
@@ -811,7 +811,7 @@ Please confirm this order. Thank you!
               onClick={handlePlaceOrder}
               disabled={!contactMethod || !shippingLocation}
               className={`w-full py-3 md:py-4 rounded-2xl font-bold text-base md:text-lg shadow-lg transition-all flex items-center justify-center gap-2 ${contactMethod && shippingLocation
-                ? 'bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white hover:shadow-xl transform hover:scale-105 border border-gold-500/20'
+                ? 'bg-navy-900 hover:bg-navy-800 text-white hover:shadow-xl transform hover:scale-105 border border-gold-500/20'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
             >
@@ -823,14 +823,14 @@ Please confirm this order. Thank you!
           {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-xl p-5 md:p-6 sticky top-24 border-2 border-gold-300/30">
-              <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-2">
+              <h2 className="text-lg md:text-xl font-bold text-navy-900 mb-4 md:mb-6 flex items-center gap-2">
                 Final Summary
                 <Sparkles className="w-5 h-5 text-gold-600" />
               </h2>
 
               {/* Customer Info */}
               <div className="bg-gray-50 rounded-lg p-4 mb-6 text-sm">
-                <p className="font-semibold text-gray-900 mb-2">{fullName}</p>
+                <p className="font-semibold text-navy-900 mb-2">{fullName}</p>
                 <p className="text-gray-600">{email}</p>
                 <p className="text-gray-600">{phone}</p>
                 <div className="mt-3 pt-3 border-t border-gray-200 text-gray-600">
@@ -854,7 +854,7 @@ Please confirm this order. Thank you!
                 </div>
                 <div className="border-t-2 border-gray-200 pt-3">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-gray-900">Total</span>
+                    <span className="font-bold text-navy-900">Total</span>
                     <span className="text-2xl font-bold text-gold-600">
                       ₱{finalTotal.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                     </span>

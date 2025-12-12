@@ -38,7 +38,7 @@ const Cart: React.FC<CartProps> = ({
             </p>
             <button
               onClick={onContinueShopping}
-              className="bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:shadow-gold-glow transform hover:scale-105 transition-all w-full flex items-center justify-center gap-2 border border-gold-500/20"
+              className="bg-navy-900 hover:bg-navy-800 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:shadow-gold-glow transform hover:scale-105 transition-all w-full flex items-center justify-center gap-2 border border-gold-500/20"
             >
               <ArrowLeft className="w-5 h-5" />
               Browse Products
@@ -229,7 +229,7 @@ const Cart: React.FC<CartProps> = ({
 
               <button
                 onClick={onCheckout}
-                className="w-full bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white py-3 md:py-4 rounded-lg font-semibold text-sm md:text-base shadow-lg hover:shadow-gold-glow transform hover:scale-105 transition-all mb-3 flex items-center justify-center gap-2 border border-gold-500/20"
+                className="w-full bg-navy-900 hover:bg-navy-800 text-white py-3 md:py-4 rounded-lg font-semibold text-sm md:text-base shadow-lg hover:shadow-gold-glow transform hover:scale-105 transition-all mb-3 flex items-center justify-center gap-2 border border-gold-500/20"
               >
                 <CreditCard className="w-5 h-5" />
                 Proceed to Checkout

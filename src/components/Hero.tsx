@@ -54,7 +54,7 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
             </button>
             <a
               href="/coa"
-              className="px-8 py-3 rounded-lg font-medium text-theme-text hover:text-theme-accent transition-colors flex items-center gap-2 w-full sm:w-auto justify-center"
+              className="px-8 py-3 rounded-lg font-medium text-theme-text hover:text-navy-900 transition-colors flex items-center gap-2 w-full sm:w-auto justify-center"
             >
               View Lab Tests & Quality Assurance
               <ShieldCheck className="w-4 h-4" />

@@ -131,14 +131,14 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
             .single();
 
           if (varError) throw varError;
-          
+
           if (variation) {
             const newStock = Math.max(0, variation.stock_quantity - item.quantity);
             const { error: updateError } = await supabase
               .from('product_variations')
               .update({ stock_quantity: newStock })
               .eq('id', item.variation_id);
-            
+
             if (updateError) throw updateError;
           }
         } else {
@@ -150,14 +150,14 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
             .single();
 
           if (prodError) throw prodError;
-          
+
           if (product) {
             const newStock = Math.max(0, product.stock_quantity - item.quantity);
             const { error: updateError } = await supabase
               .from('products')
               .update({ stock_quantity: newStock })
               .eq('id', item.product_id);
-            
+
             if (updateError) throw updateError;
           }
         }
@@ -178,10 +178,10 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
       // Refresh orders and products
       await loadOrders();
       await refreshProducts();
-      
+
       // Trigger custom event to refresh inventory sales data
       window.dispatchEvent(new CustomEvent('orderConfirmed'));
-      
+
       alert(`Order confirmed! Stock has been deducted from inventory.`);
       setSelectedOrder(null);
     } catch (error) {
@@ -311,14 +311,14 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
                 <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs md:text-sm">Dashboard</span>
               </button>
-              <h1 className="text-sm md:text-base lg:text-xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent truncate">
+              <h1 className="text-sm md:text-base lg:text-xl font-bold text-navy-900 truncate">
                 Orders Management
               </h1>
             </div>
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl font-medium text-xs md:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1 md:gap-2 disabled:opacity-50 border border-gold-500/20"
+              className="bg-navy-900 hover:bg-navy-800 text-white px-2 md:px-4 py-1.5 md:py-2 rounded-lg md:rounded-xl font-medium text-xs md:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-1 md:gap-2 disabled:opacity-50 border border-gold-500/20"
             >
               <RefreshCw className={`w-3 h-3 md:w-4 md:h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               <span className="hidden sm:inline">Refresh</span>
@@ -332,63 +332,56 @@ const OrdersManager: React.FC<OrdersManagerProps> = ({ onBack }) => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 md:gap-3 mb-4 md:mb-6">
           <button
             onClick={() => setStatusFilter('all')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'all' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'all' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">All Orders</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">{statusCounts.all}</p>
           </button>
           <button
             onClick={() => setStatusFilter('new')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'new' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'new' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">New</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-gold-600">{statusCounts.new}</p>
           </button>
           <button
             onClick={() => setStatusFilter('confirmed')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'confirmed' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'confirmed' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Confirmed</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">{statusCounts.confirmed}</p>
           </button>
           <button
             onClick={() => setStatusFilter('processing')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'processing' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'processing' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Processing</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800">{statusCounts.processing}</p>
           </button>
           <button
             onClick={() => setStatusFilter('shipped')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'shipped' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'shipped' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Shipped</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900">{statusCounts.shipped}</p>
           </button>
           <button
             onClick={() => setStatusFilter('delivered')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'delivered' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'delivered' ? 'border-gold-500 shadow-gold-glow' : 'border-gray-200 hover:border-gold-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Delivered</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-green-600">{statusCounts.delivered}</p>
           </button>
           <button
             onClick={() => setStatusFilter('cancelled')}
-            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${
-              statusFilter === 'cancelled' ? 'border-red-500' : 'border-gray-200 hover:border-red-300'
-            }`}
+            className={`bg-white rounded-lg md:rounded-xl shadow-md hover:shadow-lg p-2 md:p-3 lg:p-4 border-2 transition-all ${statusFilter === 'cancelled' ? 'border-red-500' : 'border-gray-200 hover:border-red-300'
+              }`}
           >
             <p className="text-[10px] md:text-xs text-gray-600 mb-1">Cancelled</p>
             <p className="text-lg md:text-xl lg:text-2xl font-bold text-red-600">{statusCounts.cancelled}</p>
@@ -461,13 +454,12 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onView, getStatusColor, ge
               <span className="hidden sm:inline">{order.order_status.charAt(0).toUpperCase() + order.order_status.slice(1)}</span>
               <span className="sm:hidden">{order.order_status.charAt(0).toUpperCase()}</span>
             </span>
-            <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-semibold ${
-              order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gold-100 text-gold-700'
-            }`}>
+            <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-semibold ${order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gold-100 text-gold-700'
+              }`}>
               {order.payment_status === 'paid' ? '✓ Paid' : 'Pending'}
             </span>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 text-xs md:text-sm">
             <div className="min-w-0">
               <span className="text-gray-500 text-[10px] md:text-xs">Customer</span>
@@ -497,7 +489,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ order, onView, getStatusColor, ge
         <div className="flex flex-col gap-2 md:min-w-[120px]">
           <button
             onClick={onView}
-            className="px-3 md:px-4 py-1.5 md:py-2 bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white rounded-lg transition-colors font-medium text-xs md:text-sm flex items-center justify-center gap-1 md:gap-2 shadow-md hover:shadow-lg border border-gold-500/20"
+            className="px-3 md:px-4 py-1.5 md:py-2 bg-navy-900 hover:bg-navy-800 text-white rounded-lg transition-colors font-medium text-xs md:text-sm flex items-center justify-center gap-1 md:gap-2 shadow-md hover:shadow-lg border border-gold-500/20"
           >
             <Eye className="w-3 h-3 md:w-4 md:h-4" />
             <span className="hidden sm:inline">View Details</span>
@@ -541,7 +533,7 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
                 <ArrowLeft className="h-4 w-4 md:h-5 md:w-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="text-xs md:text-sm">Back to Orders</span>
               </button>
-              <h1 className="text-sm md:text-base lg:text-xl font-bold bg-gradient-to-r from-black to-gray-900 bg-clip-text text-transparent truncate">
+              <h1 className="text-sm md:text-base lg:text-xl font-bold text-navy-900 truncate">
                 Order #{order.id.slice(0, 8).toUpperCase()}
               </h1>
             </div>
@@ -554,14 +546,13 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
           {/* Order Status */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 md:gap-4">
             <div>
-              <span className={`inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border ${
-                order.order_status === 'new' ? 'bg-gold-100 text-gold-800 border-gold-300' :
-                order.order_status === 'confirmed' ? 'bg-gray-100 text-gray-800 border-gray-300' :
-                order.order_status === 'processing' ? 'bg-gray-100 text-gray-800 border-gray-300' :
-                order.order_status === 'shipped' ? 'bg-gray-100 text-gray-800 border-gray-300' :
-                order.order_status === 'delivered' ? 'bg-green-100 text-green-800 border-green-300' :
-                'bg-red-100 text-red-800 border-red-300'
-              }`}>
+              <span className={`inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border ${order.order_status === 'new' ? 'bg-gold-100 text-gold-800 border-gold-300' :
+                  order.order_status === 'confirmed' ? 'bg-gray-100 text-gray-800 border-gray-300' :
+                    order.order_status === 'processing' ? 'bg-gray-100 text-gray-800 border-gray-300' :
+                      order.order_status === 'shipped' ? 'bg-gray-100 text-gray-800 border-gray-300' :
+                        order.order_status === 'delivered' ? 'bg-green-100 text-green-800 border-green-300' :
+                          'bg-red-100 text-red-800 border-red-300'
+                }`}>
                 {order.order_status.charAt(0).toUpperCase() + order.order_status.slice(1)}
               </span>
             </div>
@@ -660,10 +651,9 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
             <h3 className="font-bold text-gray-900 mb-2 md:mb-3 text-sm md:text-base">Payment Information</h3>
             <div className="bg-gray-50 rounded-lg p-3 md:p-4 space-y-1.5 md:space-y-2 text-xs md:text-sm">
               <p><span className="font-semibold">Method:</span> {order.payment_method_name || 'N/A'}</p>
-              <p className="flex items-center gap-2 flex-wrap"><span className="font-semibold">Status:</span> 
-                <span className={`px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold ${
-                  order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gold-100 text-gold-700'
-                }`}>
+              <p className="flex items-center gap-2 flex-wrap"><span className="font-semibold">Status:</span>
+                <span className={`px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold ${order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gold-100 text-gold-700'
+                  }`}>
                   {order.payment_status === 'paid' ? 'Paid' : 'Pending'}
                 </span>
               </p>

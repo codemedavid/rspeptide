@@ -41,10 +41,19 @@ export default {
         },
         accent: {
           light: '#F0E6D2', // Beige
-          DEFAULT: '#1A1A1A', // Black
-          dark: '#000000',
+          DEFAULT: '#000080', // Navy Blue (formerly Black)
+          dark: '#000040',
           white: '#ffffff',
           black: '#1A1A1A',
+          navy: '#000080', // Classic Navy
+        },
+        navy: {
+          50: '#F0F4FF',
+          100: '#E0E8FF',
+          500: '#3B82F6',
+          700: '#1D4ED8',
+          800: '#1e3a8a', // Deep Navy
+          900: '#000080', // Darkest Navy
         },
       },
       fontFamily: {

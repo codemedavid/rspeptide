@@ -42,7 +42,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden my-2 sm:my-8">
         {/* Header */}
-        <div className="bg-gradient-to-r from-black via-gray-900 to-black text-white p-3 sm:p-4 md:p-6 relative border-b-2 border-gold-500/30">
+        <div className="bg-navy-900 text-white p-3 sm:p-4 md:p-6 relative border-b-2 border-gold-500/30">
           <button
             onClick={onClose}
             className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition-colors text-white hover:text-gold-400"
@@ -135,10 +135,10 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
                   <div className="flex justify-between">
                     <span className="text-gray-600 text-[11px] sm:text-xs md:text-sm">Stock:</span>
                     <span className={`font-medium text-[11px] sm:text-xs md:text-sm ${(product.variations && product.variations.length > 0
-                        ? product.variations.some(v => v.stock_quantity > 0)
-                        : product.stock_quantity > 0)
-                        ? 'text-gold-600'
-                        : 'text-red-600'
+                      ? product.variations.some(v => v.stock_quantity > 0)
+                      : product.stock_quantity > 0)
+                      ? 'text-gold-600'
+                      : 'text-red-600'
                       }`}>
                       {product.variations && product.variations.length > 0
                         ? product.variations.reduce((sum, v) => sum + v.stock_quantity, 0)
@@ -163,7 +163,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
                     ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                   </div>
                   {hasDiscount && (
-                    <div className="inline-block bg-gradient-to-r from-black to-gray-900 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1 rounded-full text-[10px] sm:text-xs md:text-sm font-bold mt-1 sm:mt-1.5 md:mt-2 border border-gold-500/20">
+                    <div className="inline-block bg-navy-900 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1 rounded-full text-[10px] sm:text-xs md:text-sm font-bold mt-1 sm:mt-1.5 md:mt-2 border border-gold-500/20">
                       Save ₱{(product.base_price - product.discount_price!).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                     </div>
                   )}
@@ -246,7 +246,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
                 <button
                   onClick={handleAddToCart}
                   disabled={!hasAnyStock || (selectedVariation && selectedVariation.stock_quantity === 0) || (!selectedVariation && product.stock_quantity === 0)}
-                  className="w-full bg-gradient-to-r from-black to-gray-900 hover:from-gray-900 hover:to-black text-white py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-1.5 sm:gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border-2 border-gold-500/20 hover:border-gold-500/40"
+                  className="w-full bg-navy-900 hover:bg-navy-800 text-white py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center justify-center gap-1.5 sm:gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border-2 border-gold-500/20 hover:border-gold-500/40"
                 >
                   <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                   {!hasAnyStock || (selectedVariation && selectedVariation.stock_quantity === 0) || (!selectedVariation && product.stock_quantity === 0) ? 'Out of Stock' : 'Add to Cart'}
