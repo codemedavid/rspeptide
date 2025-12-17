@@ -40,6 +40,8 @@ export interface ProductVariation {
   name: string;
   quantity_mg: number;
   price: number;
+  discount_price: number | null;
+  discount_active: boolean;
   stock_quantity: number;
   created_at: string;
 }

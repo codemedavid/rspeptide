@@ -239,7 +239,7 @@ export default function GuideManager() {
 
             <div className="max-w-6xl mx-auto px-4 py-6">
                 <div className="mb-4">
-                    <p className="text-theme-secondary text-sm">
+                    <p className="text-gray-700 text-sm">
                         Create and manage educational articles. Only enabled articles are visible to customers.
                     </p>
                 </div>

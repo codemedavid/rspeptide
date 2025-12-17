@@ -20,6 +20,7 @@ interface Order {
   customer_email: string;
   customer_phone: string;
   shipping_address: string;
+  shipping_barangay: string | null;
   shipping_city: string;
   shipping_state: string;
   shipping_zip_code: string;
@@ -642,6 +643,9 @@ const OrderDetailsView: React.FC<OrderDetailsViewProps> = ({
             <h3 className="font-bold text-gray-900 mb-2 md:mb-3 text-sm md:text-base">Shipping Address</h3>
             <div className="bg-gray-50 rounded-lg p-3 md:p-4 text-xs md:text-sm">
               <p>{order.shipping_address}</p>
+              {order.shipping_barangay && (
+                <p>Barangay: {order.shipping_barangay}</p>
+              )}
               <p>{order.shipping_city}, {order.shipping_state} {order.shipping_zip_code}</p>
               <p>{order.shipping_country}</p>
               {order.shipping_location && (

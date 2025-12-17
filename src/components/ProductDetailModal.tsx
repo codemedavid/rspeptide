@@ -154,17 +154,28 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
               {/* Price */}
               <div className="bg-gradient-to-r from-white to-gray-50 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 border-2 border-navy-700/30 shadow-lg">
                 <div className="text-center mb-3 sm:mb-4">
-                  {hasDiscount && (
-                    <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 line-through mb-0.5 sm:mb-1">
-                      ₱{product.base_price.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
-                    </div>
-                  )}
-                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gold-600">
-                    ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
-                  </div>
-                  {hasDiscount && (
-                    <div className="inline-block bg-navy-900 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1 rounded-full text-[10px] sm:text-xs md:text-sm font-bold mt-1 sm:mt-1.5 md:mt-2 border border-navy-900/20">
-                      Save ₱{(product.base_price - product.discount_price!).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                  {hasDiscount ? (
+                    <>
+                      {/* Original Price - Strikethrough */}
+                      <div className="flex items-center justify-center gap-2 mb-1">
+                        <span className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 line-through font-medium">
+                          ₱{product.base_price.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                        </span>
+                        <span className="text-xs sm:text-sm font-bold text-red-600 bg-red-50 px-2 py-1 rounded">
+                          {Math.round((1 - product.discount_price! / product.base_price) * 100)}% OFF
+                        </span>
+                      </div>
+                      {/* Sale Price - Prominent Green */}
+                      <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-green-600 mb-2">
+                        ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                      </div>
+                      <div className="inline-block bg-green-100 text-green-800 px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 md:py-1 rounded-full text-[10px] sm:text-xs md:text-sm font-bold border border-green-200">
+                        You Save ₱{(product.base_price - product.discount_price!).toLocaleString('en-PH', { minimumFractionDigits: 0 })}!
+                      </div>
+                    </>
+                  ) : (
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gold-600">
+                      ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
                     </div>
                   )}
                 </div>

@@ -21,13 +21,22 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
   );
   const [quantity, setQuantity] = useState(1);
 
+  // Calculate current price considering both product and variation discounts
   const currentPrice = selectedVariation
-    ? selectedVariation.price
+    ? (selectedVariation.discount_active && selectedVariation.discount_price)
+      ? selectedVariation.discount_price
+      : selectedVariation.price
     : (product.discount_active && product.discount_price)
       ? product.discount_price
       : product.base_price;
 
-  const hasDiscount = !selectedVariation && product.discount_active && product.discount_price;
+  // Check if there's an active discount
+  const hasDiscount = selectedVariation
+    ? (selectedVariation.discount_active && selectedVariation.discount_price !== null)
+    : (product.discount_active && product.discount_price !== null);
+
+  // Get original price for strikethrough
+  const originalPrice = selectedVariation ? selectedVariation.price : product.base_price;
 
   const handleAddToCart = () => {
     onAddToCart(product, selectedVariation, quantity);
@@ -85,7 +94,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           )}
           {hasDiscount && (
             <span className="badge bg-theme-secondary text-white">
-              {Math.round((1 - currentPrice / product.base_price) * 100)}% OFF
+              {Math.round((1 - currentPrice / originalPrice) * 100)}% OFF
             </span>
           )}
         </div>
@@ -148,16 +157,32 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
         {/* Price and Cart Actions */}
         <div className="flex flex-col gap-3 mt-2">
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-theme-text">
-              ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
-            </span>
-            {hasDiscount && (
-              <span className="text-sm text-gray-400 line-through">
-                ₱{product.base_price.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+          {hasDiscount ? (
+            <div className="flex flex-col gap-1">
+              {/* Original Price - Strikethrough */}
+              <div className="flex items-center gap-2">
+                <span className="text-base text-gray-400 line-through font-medium">
+                  ₱{originalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                </span>
+                <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">
+                  {Math.round((1 - currentPrice / originalPrice) * 100)}% OFF
+                </span>
+              </div>
+              {/* Sale Price - Prominent */}
+              <div className="flex items-baseline gap-1">
+                <span className="text-xl font-bold text-green-600">
+                  ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                </span>
+                <span className="text-xs text-gray-500">Sale Price</span>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-theme-text">
+                ₱{currentPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
               </span>
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="flex items-center gap-1.5 sm:gap-2 relative z-20">
             {/* Quantity Controls */}

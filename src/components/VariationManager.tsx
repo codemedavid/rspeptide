@@ -18,6 +18,8 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
     name: '',
     quantity_mg: 5.0,
     price: product.base_price,
+    discount_price: null as number | null,
+    discount_active: false,
     stock_quantity: 0
   });
 
@@ -25,6 +27,8 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
     name: '',
     quantity_mg: 5.0,
     price: product.base_price,
+    discount_price: null as number | null,
+    discount_active: false,
     stock_quantity: 0
   });
 
@@ -41,6 +45,8 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
         name: newVariation.name,
         quantity_mg: newVariation.quantity_mg,
         price: newVariation.price,
+        discount_price: newVariation.discount_price,
+        discount_active: newVariation.discount_active,
         stock_quantity: newVariation.stock_quantity
       });
 
@@ -49,6 +55,8 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
           name: '',
           quantity_mg: 5.0,
           price: product.base_price,
+          discount_price: null,
+          discount_active: false,
           stock_quantity: 0
         });
         setIsAdding(false);
@@ -69,6 +77,8 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
       name: variation.name,
       quantity_mg: variation.quantity_mg,
       price: variation.price,
+      discount_price: variation.discount_price,
+      discount_active: variation.discount_active,
       stock_quantity: variation.stock_quantity
     });
     setIsAdding(false);
@@ -215,6 +225,36 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
                               className="input-field"
                             />
                           </div>
+
+                          <div>
+                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                              Discount Price (₱)
+                            </label>
+                            <input
+                              type="number"
+                              step="0.01"
+                              value={editingVariation.discount_price || ''}
+                              onChange={(e) => setEditingVariation({ ...editingVariation, discount_price: parseFloat(e.target.value) || null })}
+                              className="input-field"
+                              placeholder="Leave empty for no discount"
+                            />
+                          </div>
+
+                          <div className="flex items-center pt-6">
+                            <label className="flex items-center gap-2 cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={editingVariation.discount_active}
+                                onChange={(e) => setEditingVariation({
+                                  ...editingVariation,
+                                  discount_active: e.target.checked,
+                                  discount_price: e.target.checked ? editingVariation.discount_price : null
+                                })}
+                                className="w-4 h-4 text-teal-600 rounded focus:ring-teal-500"
+                              />
+                              <span className="text-sm font-semibold text-gray-700">🏷️ Enable Discount</span>
+                            </label>
+                          </div>
                         </div>
 
                         <div className="flex gap-3 pt-4">
@@ -349,6 +389,36 @@ const VariationManager: React.FC<VariationManagerProps> = ({ product, onClose })
                       onChange={(e) => setNewVariation({ ...newVariation, stock_quantity: parseInt(e.target.value) || 0 })}
                       className="input-field"
                     />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Discount Price (₱)
+                    </label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={newVariation.discount_price || ''}
+                      onChange={(e) => setNewVariation({ ...newVariation, discount_price: parseFloat(e.target.value) || null })}
+                      className="input-field"
+                      placeholder="Leave empty for no discount"
+                    />
+                  </div>
+
+                  <div className="flex items-center pt-6">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={newVariation.discount_active}
+                        onChange={(e) => setNewVariation({
+                          ...newVariation,
+                          discount_active: e.target.checked,
+                          discount_price: e.target.checked ? newVariation.discount_price : null
+                        })}
+                        className="w-4 h-4 text-teal-600 rounded focus:ring-teal-500"
+                      />
+                      <span className="text-sm font-semibold text-gray-700">🏷️ Enable Discount</span>
+                    </label>
                   </div>
                 </div>
 

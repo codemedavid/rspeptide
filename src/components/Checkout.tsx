@@ -797,18 +797,45 @@ Please confirm this order. Thank you!
                     )}
                   </div>
 
-                  <div className="flex justify-between text-gray-600">
-                    <span>Subtotal</span>
-                    <span className="font-medium">₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
-                  </div>
+                  {/* Subtotal with discount pricing */}
+                  {discountAmount > 0 ? (
+                    <>
+                      {/* Discounted Subtotal Display */}
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-600">Subtotal</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-gray-400 line-through text-sm">
+                            ₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                          </span>
+                          <span className="font-semibold text-green-600">
+                            ₱{(totalPrice - discountAmount).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                          </span>
+                        </div>
+                      </div>
 
-                  {discountAmount > 0 && (
-                    <div className="flex justify-between text-green-600">
-                      <span className="flex items-center gap-1">
-                        <Tag className="w-3 h-3" />
-                        Discount ({appliedPromo?.code})
-                      </span>
-                      <span className="font-medium">-₱{discountAmount.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
+                      {/* Savings Badge */}
+                      <div className="flex justify-between items-center bg-green-50 -mx-6 px-6 py-3 rounded-lg border border-green-100">
+                        <span className="flex items-center gap-1.5 text-green-700 font-medium text-sm">
+                          <Tag className="w-4 h-4" />
+                          Discount ({appliedPromo?.code})
+                        </span>
+                        <span className="font-bold text-green-700">
+                          -₱{discountAmount.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                        </span>
+                      </div>
+
+                      {/* You Saved Message */}
+                      <div className="flex justify-center -mx-6 px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 -mt-2">
+                        <p className="text-white text-sm font-bold flex items-center gap-1.5">
+                          <Sparkles className="w-4 h-4" />
+                          You saved ₱{discountAmount.toLocaleString('en-PH', { minimumFractionDigits: 0 })}!
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex justify-between text-gray-600">
+                      <span>Subtotal</span>
+                      <span className="font-medium">₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
                     </div>
                   )}
 
@@ -1102,10 +1129,39 @@ Please confirm this order. Thank you!
 
               {/* Pricing */}
               <div className="space-y-3">
-                <div className="flex justify-between text-gray-600">
-                  <span>Subtotal</span>
-                  <span className="font-medium">₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
-                </div>
+                {/* Subtotal with discount pricing */}
+                {discountAmount > 0 ? (
+                  <>
+                    {/* Discounted Subtotal Display */}
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600">Subtotal</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-400 line-through text-sm">
+                          ₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                        </span>
+                        <span className="font-semibold text-green-600">
+                          ₱{(totalPrice - discountAmount).toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Savings Badge */}
+                    <div className="flex justify-between items-center bg-green-50 -mx-6 px-6 py-2.5 border-y border-green-100">
+                      <span className="flex items-center gap-1 text-green-700 font-medium text-xs">
+                        <Tag className="w-3.5 h-3.5" />
+                        Saved with {appliedPromo?.code}
+                      </span>
+                      <span className="font-bold text-green-700 text-sm">
+                        -₱{discountAmount.toLocaleString('en-PH', { minimumFractionDigits: 0 })}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex justify-between text-gray-600">
+                    <span>Subtotal</span>
+                    <span className="font-medium">₱{totalPrice.toLocaleString('en-PH', { minimumFractionDigits: 0 })}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-gray-600 text-xs">
                   <span>Shipping</span>
                   <span className="font-medium text-gold-600">
