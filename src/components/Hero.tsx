@@ -47,9 +47,9 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
             {/* Main Headline */}
             <div className="space-y-2">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-theme-text leading-[1.1] tracking-tight">
-                {titlePrefix} <span className="text-theme-secondary relative inline-block">
+                {titlePrefix} <span className="relative inline-block bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                   {titleHighlight}
-                  <svg className="absolute w-full h-3 -bottom-1 left-0 text-theme-secondary/20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <svg className="absolute w-full h-3 -bottom-1 left-0 text-yellow-400/30" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5 L 100 0 Q 50 5 0 0 Z" fill="currentColor" />
                   </svg>
                 </span>

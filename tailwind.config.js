@@ -41,19 +41,23 @@ export default {
         },
         accent: {
           light: '#F0E6D2', // Beige
-          DEFAULT: '#000080', // Navy Blue (formerly Black)
-          dark: '#000040',
+          DEFAULT: '#00008B', // Dark Blue
+          dark: '#000066',
           white: '#ffffff',
           black: '#1A1A1A',
-          navy: '#000080', // Classic Navy
+          navy: '#00008B', // Dark Blue
         },
         navy: {
-          50: '#F0F4FF',
-          100: '#E0E8FF',
-          500: '#3B82F6',
-          700: '#1D4ED8',
-          800: '#1e3a8a', // Deep Navy
-          900: '#000080', // Darkest Navy
+          50: '#e6e6f5',
+          100: '#cccceb',
+          200: '#9999d6',
+          300: '#6666c2',
+          400: '#3333ad',
+          500: '#0000a0',
+          600: '#000099',
+          700: '#00008B', // Dark Blue (main)
+          800: '#000070',
+          900: '#000055', // Darkest
         },
       },
       fontFamily: {
