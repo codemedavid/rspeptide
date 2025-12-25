@@ -224,23 +224,23 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
                   <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2">
                     Quantity:
                   </label>
-                  <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4">
+                  <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5">
                     <button
                       onClick={decrementQuantity}
-                      className="p-2 sm:p-2.5 md:p-3 bg-white border-2 border-navy-700/30 hover:bg-gold-50 hover:border-navy-900 rounded-lg sm:rounded-xl transition-all shadow-sm"
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 border-2 border-gray-300 hover:bg-gold-100 hover:border-gold-500 rounded-lg sm:rounded-xl transition-all shadow-md active:scale-95"
                       disabled={!product.available}
                     >
-                      <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gold-600" />
+                      <Minus className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-gray-700" />
                     </button>
-                    <span className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 min-w-[40px] sm:min-w-[50px] md:min-w-[60px] text-center">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 min-w-[50px] sm:min-w-[60px] md:min-w-[70px] text-center">
                       {quantity}
                     </span>
                     <button
                       onClick={incrementQuantity}
-                      className="p-2 sm:p-2.5 md:p-3 bg-white border-2 border-navy-700/30 hover:bg-gold-50 hover:border-navy-900 rounded-lg sm:rounded-xl transition-all shadow-sm"
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center bg-gray-100 border-2 border-gray-300 hover:bg-gold-100 hover:border-gold-500 rounded-lg sm:rounded-xl transition-all shadow-md active:scale-95"
                       disabled={!product.available}
                     >
-                      <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gold-600" />
+                      <Plus className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-gray-700" />
                     </button>
                   </div>
                 </div>

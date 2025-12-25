@@ -62,14 +62,10 @@ const Hero: React.FC<HeroProps> = ({ onShopAll }) => {
             className={`font-outfit text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
           >
-            {tagline.split(' ').map((word, i) => (
-              <span key={i} className="inline-block">
-                {word === 'Real' || word === 'Results.' ? (
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white">{word}</span>
-                ) : word}
-                {i < tagline.split(' ').length - 1 && ' '}
-              </span>
-            ))}
+            <span className="block">From First Dose</span>
+            <span className="block">
+              to <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white">Real Results.</span>
+            </span>
           </h1>
 
           {/* Underline accent */}
