@@ -24,8 +24,17 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems }) => {
     product.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Sort products
+  // Sort products - Featured first (Tirzepatide first among featured), then by selected sort
   const sortedProducts = [...filteredProducts].sort((a, b) => {
+    // Tirzepatide always first
+    if (a.name === 'Tirzepatide') return -1;
+    if (b.name === 'Tirzepatide') return 1;
+
+    // Featured products come before non-featured
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+
+    // Then apply selected sort
     switch (sortBy) {
       case 'name':
         return a.name.localeCompare(b.name);
