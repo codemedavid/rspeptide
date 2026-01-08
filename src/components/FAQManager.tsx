@@ -39,8 +39,7 @@ const FAQManager: React.FC<FAQManagerProps> = ({ onBack }) => {
         setError(null);
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const saveFAQ = async () => {
         setError(null);
 
         try {
@@ -53,6 +52,11 @@ const FAQManager: React.FC<FAQManagerProps> = ({ onBack }) => {
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to save FAQ');
         }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await saveFAQ();
     };
 
     const handleEdit = (faq: FAQItem) => {
@@ -131,9 +135,19 @@ const FAQManager: React.FC<FAQManagerProps> = ({ onBack }) => {
             {/* Add/Edit Form */}
             {isAdding && (
                 <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                    <h3 className="font-semibold text-gray-900 mb-4">
-                        {editingId ? 'Edit FAQ' : 'Add New FAQ'}
-                    </h3>
+                    <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-semibold text-gray-900">
+                            {editingId ? 'Edit FAQ' : 'Add New FAQ'}
+                        </h3>
+                        <button
+                            type="button"
+                            onClick={saveFAQ}
+                            className="flex items-center gap-2 bg-navy-900 text-white px-3 py-1.5 rounded-lg hover:bg-navy-800 transition-colors text-sm shadow-sm"
+                        >
+                            <Save className="w-4 h-4" />
+                            Save
+                        </button>
+                    </div>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
